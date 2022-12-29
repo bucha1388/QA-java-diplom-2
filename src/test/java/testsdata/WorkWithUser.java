@@ -19,7 +19,7 @@ public class WorkWithUser {
                         .post(API_REGISTER);
 
 
-        System.out.println(response.asString());
+        System.out.println("создаем... " + response.asString());
 
         return response;
 
@@ -30,14 +30,12 @@ public class WorkWithUser {
         Response response =
                 given()
                         .header("Content-type", "application/json")
-                        .auth().oauth2("")
-                        .and()
                         .body(newUser)
                         .when()
                         .post(API_LOGIN);
 
 
-        System.out.println(response.asString());
+        System.out.println("логинимся " + response.asString());
 
         return response;
 
@@ -52,7 +50,22 @@ public class WorkWithUser {
                         .when()
                         .delete(API_USER);
 
-        System.out.println(response.asString());
+        System.out.println("удаляем... " + response.asString());
+
+        return response;
+
+    }
+
+    public Response patchUser(NewUser newUser, String bearerToken) {
+
+        Response response =
+                given()
+                        .headers("Content-type", "application/json", "Authorization", bearerToken)
+                        .body(newUser)
+                        .when()
+                        .patch(API_USER);
+
+        System.out.println("патчим... " + response.asString());
 
         return response;
 
@@ -63,15 +76,13 @@ public class WorkWithUser {
         Response response =
                 given()
                         .header("Content-type", "application/json")
-                        .auth().oauth2("")
-                        .and()
                         .body(newUser)
                         .when()
                         .post(API_LOGIN);
 
         String bearerToken = response.then().extract().path("accessToken");
 
-        System.out.println(bearerToken);
+//        System.out.println(bearerToken);
 
         return bearerToken;
 

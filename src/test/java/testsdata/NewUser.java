@@ -16,7 +16,7 @@ public class NewUser {
         return email;
     }
 
-    public void setLogin(String login) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -32,7 +32,7 @@ public class NewUser {
         return name;
     }
 
-    public void setName(String firstName) {
+    public void setName(String name) {
         this.name = name;
     }
 
