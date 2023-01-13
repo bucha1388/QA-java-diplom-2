@@ -19,7 +19,7 @@ public class WorkWithUser {
                         .post(API_REGISTER);
 
 
-        System.out.println("создаем... " + response.asString());
+        System.out.println("создаем пользователя... " + response.asString());
 
         return response;
 
@@ -50,7 +50,7 @@ public class WorkWithUser {
                         .when()
                         .delete(API_USER);
 
-        System.out.println("удаляем... " + response.asString());
+        System.out.println("удаляем пользователя... " + response.asString());
 
         return response;
 
@@ -65,7 +65,7 @@ public class WorkWithUser {
                         .when()
                         .patch(API_USER);
 
-        System.out.println("патчим... " + response.asString());
+        System.out.println("патчим пользователя... " + response.asString());
 
         return response;
 
