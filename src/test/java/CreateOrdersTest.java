@@ -1,7 +1,6 @@
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
-import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +12,6 @@ import testsdata.WorkWithUser;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
-import static testsdata.Endpoints.API_ORDERS;
 import static testsdata.Endpoints.BASE;
 import static testsdata.TestsData.*;
 

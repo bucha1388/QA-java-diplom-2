@@ -1,8 +1,9 @@
 package testsdata;
 
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
-import static io.restassured.RestAssured.given;
+
 import static testsdata.Endpoints.*;
 
 public class WorkWithUser {
@@ -10,7 +11,7 @@ public class WorkWithUser {
     public Response createUser(NewUser newUser) {
 
         Response response =
-                given()
+                RestAssured.given()
                         .header("Content-type", "application/json")
                         .auth().oauth2("")
                         .and()
@@ -28,7 +29,7 @@ public class WorkWithUser {
     public Response loginUser(NewUser newUser) {
 
         Response response =
-                given()
+                RestAssured.given()
                         .header("Content-type", "application/json")
                         .body(newUser)
                         .when()
@@ -45,7 +46,7 @@ public class WorkWithUser {
     public Response deleteUser(String bearerToken) {
 
         Response response =
-                given()
+                RestAssured.given()
                         .headers("Content-type", "application/json", "Authorization", bearerToken)
                         .when()
                         .delete(API_USER);
@@ -59,7 +60,7 @@ public class WorkWithUser {
     public Response patchUser(NewUser newUser, String bearerToken) {
 
         Response response =
-                given()
+                RestAssured.given()
                         .headers("Content-type", "application/json", "Authorization", bearerToken)
                         .body(newUser)
                         .when()
@@ -74,7 +75,7 @@ public class WorkWithUser {
     public String bearerToken(NewUser newUser) {
 
         Response response =
-                given()
+                RestAssured.given()
                         .header("Content-type", "application/json")
                         .body(newUser)
                         .when()

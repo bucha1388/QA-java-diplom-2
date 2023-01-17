@@ -1,17 +1,15 @@
 package testsdata;
 
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
-
-import static io.restassured.RestAssured.given;
 import static testsdata.Endpoints.API_ORDERS;
-import static testsdata.Endpoints.API_REGISTER;
 
 public class WorkWithOrders {
 
     public Response createOrder(NewOrder order, String bearerToken) {
 
         Response response =
-                given()
+                RestAssured.given()
                         .headers("Content-type", "application/json", "Authorization", bearerToken)
                         .body(order)
                         .when()
@@ -27,7 +25,7 @@ public class WorkWithOrders {
     public Response getOrderList(String bearerToken) {
 
         Response response =
-                given()
+                RestAssured.given()
                         .headers("Content-type", "application/json", "Authorization", bearerToken)
                         .when()
                         .get(API_ORDERS);
